@@ -5,7 +5,7 @@ The landing page for Campus 54, a free, fully virtual global AI summit by NSK AI
 ## Files
 - `index.html` — the whole page. All English text is written here.
 - `i18n.js` — French text. Every `data-i18n="key"` in index.html has a matching `"key"` here.
-- `config.js` — the three application form links (English, French, Arabic), the sponsor form link (`sponsorForm`) and the countdown date. Change links here, nowhere else.
+- `config.js` — the three application form links (English, French, Arabic), the sponsor form link (`sponsorForm`), the call for communities form (`communityForm`) and the countdown date. Change links here, nowhere else.
 - `app.js` — language switch (EN/FR, remembered in the browser, also `?lang=fr` in the URL), form links and countdown.
 - `styles.css` — all styles. The look is a retro arcade: Argentum Sans headings (in `assets/fonts`), Press Start 2P labels, Urbanist body text, red `#E00000`, black `#0A0A12`, yellow `#FFC400`, thick black borders and hard block shadows.
 - `assets/img` — NSK AI logo, pixel Saturn, pixel robot and role sprites.

@@ -71,13 +71,17 @@
 
   applyLang(pickLang());
 
-  // ---------- sponsor form ----------
-  var sponsor = document.getElementById("sponsor-main");
-  if (sponsor && cfg.sponsorForm && cfg.sponsorForm.trim()) {
-    sponsor.href = cfg.sponsorForm.trim();
-    sponsor.target = "_blank";
-    sponsor.rel = "noopener noreferrer";
-  }
+  // ---------- sponsor and community forms ----------
+  // Each button keeps its mailto: fallback until a form link is set in config.js.
+  [["sponsor-main", cfg.sponsorForm], ["community-main", cfg.communityForm]].forEach(function (pair) {
+    var el = document.getElementById(pair[0]);
+    var url = pair[1] && pair[1].trim();
+    if (el && url) {
+      el.href = url;
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+    }
+  });
 
   // ---------- countdown ----------
   var target = new Date(cfg.eventStart || "2027-01-28T00:00:00+01:00").getTime();
