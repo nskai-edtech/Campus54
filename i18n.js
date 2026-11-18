@@ -1,0 +1,121 @@
+/*
+ * French text for the Campus 54 site.
+ * English lives in index.html itself. Each key here matches a data-i18n="..." in index.html.
+ * To change a French line, edit it here. To add a language, copy the "fr" block.
+ */
+window.I18N = {
+  fr: {
+    "meta.title": "Campus 54 — Un sommet mondial de l’IA par NSK AI",
+    "meta.desc": "Campus 54 est un sommet mondial de l’IA, gratuit et entièrement en ligne, organisé par NSK AI. Des keynotes de leaders de l’IA du monde entier et des panels animés par des étudiants des 54 pays africains. Du 28 au 30 janvier 2027.",
+
+    "nav.tracks": "THÈMES",
+    "nav.speak": "INTERVENIR",
+    "nav.clubs": "CLUBS",
+    "nav.sponsors": "SPONSORS",
+    "nav.faq": "FAQ",
+
+    "cta.apply": "▶ Postuler pour intervenir",
+    "cta.partner": "Devenir communauté partenaire",
+    "cta.sponsor": "Devenir sponsor",
+
+    "hero.tag": "UN SOMMET MONDIAL DE L’IA PAR NSK AI · 100 % EN LIGNE",
+    "hero.tagline": "54 pays. Un seul campus mondial.",
+    "hero.line": "Un sommet mondial de l’IA entièrement en ligne : des keynotes de leaders de l’IA du monde entier, et des panels animés par des étudiants de toute l’Afrique. <strong style=\"color: #FFFFFF;\">Du 28 au 30 janvier 2027.</strong> Participation gratuite.",
+
+    "cd.title": "LANCEMENT DANS",
+    "cd.days": "JOURS",
+    "cd.hours": "H",
+    "cd.mins": "MIN",
+    "cd.secs": "SEC",
+
+    "num.countries": "PAYS",
+    "num.tracks": "THÈMES",
+    "num.days": "JOURS",
+    "num.panels": "PANELS",
+    "num.speakers": "ÉTUDIANTS INTERVENANTS",
+
+    "about.eyebrow": "NIVEAU 01 · LE CONCEPT",
+    "about.title": "Des intervenants du monde entier.<br>Des étudiants africains.<br><span style=\"color: #E00000;\">Une seule scène.</span>",
+    "about.p1": "Campus 54 est un <strong>sommet mondial de l’IA</strong>. Il réunit sur la même scène virtuelle des leaders de l’IA du monde entier et des étudiants des <strong>54 pays africains</strong>.",
+    "about.p2": "Chaque panéliste et chaque modérateur est un <strong>étudiant en cours de cursus</strong> : licence, master ou doctorat.",
+    "about.p3": "<strong>3 jours</strong> de panels de 30 minutes, des keynotes internationales et une <strong>Demo Arena</strong> pour les projets étudiants.",
+    "about.p4": "Entièrement en ligne et gratuit pour tous.",
+
+    "tracks.eyebrow": "NIVEAU 02 · CHOISIS TON NIVEAU",
+    "tracks.title": "10 thèmes.<br>Choisis le tien.",
+    "tracks.intro": "Chaque panel appartient à l’un des dix thèmes. Indique celui qui t’intéresse dans ta candidature.",
+    "t1": "La frontière de l’intelligence artificielle",
+    "t2": "Agents IA et systèmes autonomes",
+    "t3": "IA multimodale, robotique et intelligence physique",
+    "t4": "Infrastructure, calcul et énergie pour l’IA",
+    "t5": "L’IA au service de la découverte scientifique et du progrès humain",
+    "t6": "Sûreté, sécurité et fiabilité de l’IA",
+    "t7": "Gouvernance de l’IA, géopolitique et pouvoir mondial",
+    "t8": "IA, économie, éducation et avenir du travail",
+    "t9": "L’Afrique, le Sud global et la souveraineté en IA",
+    "t10": "IA, humanité, créativité et société",
+
+    "apply.eyebrow": "NIVEAU 03 · APPEL À INTERVENANTS",
+    "apply.title": "Choisis ton<br>joueur.",
+    "apply.who": "<strong>Qui peut postuler :</strong> les étudiants inscrits dans une université, partout en Afrique ou dans la diaspora. Licence, master ou doctorat.",
+    "apply.keynote": "<strong>Vous souhaitez donner une keynote ?</strong> Les intervenants internationaux peuvent écrire à <a href=\"mailto:campus54@nskai.org?subject=Campus%2054%20keynote\">campus54@nskai.org</a>.",
+    "role.p1": "JOUEUR 1",
+    "role.speaker": "Panéliste",
+    "role.speaker.text": "Partage ton regard sur un thème.",
+    "role.p2": "JOUEUR 2",
+    "role.mod": "Modérateur",
+    "role.mod.text": "Anime un panel.",
+    "role.p3": "JOUEUR 3",
+    "role.demo": "Demo Arena",
+    "role.demo.text": "Montre ce que tu as construit.",
+    "apply.nopaper": "AUCUN ARTICLE REQUIS",
+    "apply.close": "Candidatures jusqu’au<br>21 décembre 2026.",
+    "apply.now": "▶ POSTULER",
+    "apply.other": "Aussi en :",
+
+    "comm.eyebrow": "NIVEAU 04 · MULTIJOUEUR",
+    "comm.title": "Viens avec<br>ton équipe.",
+    "comm.intro": "Pour les communautés étudiantes en IA, tech et code : GDG on Campus, branches IEEE, clubs d’IA universitaires et communautés indépendantes.",
+    "comm.cta": "▶ Devenir partenaire",
+    "comm.perks": "BONUS POUR LES PARTENAIRES",
+    "comm.p1": "Votre logo sur le site et le programme de Campus 54",
+    "comm.p2": "Une mise en avant lors d’un Country Day avant l’événement",
+    "comm.p3": "Des places pour proposer des intervenants et un modérateur parmi vos membres",
+
+    "spon.eyebrow": "NIVEAU 05 · NIVEAU BONUS",
+    "spon.title": "Placez votre marque devant un public mondial de l’IA et des milliers des meilleurs étudiants en IA d’Afrique, dans 54 pays.",
+    "spon.cta": "▶ Sponsoriser Campus 54",
+
+    "tl.eyebrow": "NIVEAU 06 · CARTE DES NIVEAUX",
+    "tl.title": "La route<br>vers le lancement.",
+    "tl.s1": "1-1 · DÉPART",
+    "tl.l1": "Ouverture des candidatures",
+    "tl.d1": "20 nov. 2026",
+    "tl.s2": "1-2 · POINT DE CONTRÔLE",
+    "tl.l2": "Clôture des candidatures",
+    "tl.d2": "21 déc. 2026",
+    "tl.s3": "1-3 · NIVEAU FINAL",
+    "tl.l3": "Campus 54 en direct",
+    "tl.d3": "28–30 janv. 2027",
+
+    "faq.eyebrow": "AIDE · FAQ",
+    "faq.title": "Des questions ?",
+    "faq.q1": "Est-ce gratuit ?",
+    "faq.a1": "Oui, gratuit pour les intervenants comme pour le public.",
+    "faq.q2": "Où cela se passe-t-il ?",
+    "faq.a2": "Entièrement en ligne. Vous participez où que vous soyez.",
+    "faq.q3": "Qui peut intervenir ?",
+    "faq.a3": "Les keynotes sont données par des leaders de l’IA du monde entier. Les panélistes et les modérateurs sont des étudiants. Pour donner une keynote, écrivez à <a href=\"mailto:campus54@nskai.org\">campus54@nskai.org</a>.",
+    "faq.q4": "Puis-je simplement assister ?",
+    "faq.a4": "Oui, tout le monde peut participer.",
+    "faq.q5": "Dans quelles langues sont les panels ?",
+    "faq.a5": "Les keynotes sont en anglais. Les panels ont lieu en anglais, en français et en arabe.",
+    "faq.q6": "Comment devenir sponsor ou partenaire ?",
+    "faq.a6": "Écrivez à <a href=\"mailto:campus54@nskai.org\">campus54@nskai.org</a>.",
+
+    "foot.tag": "54 pays.<br>Un seul campus mondial.",
+    "foot.org": "Organisé par NSK AI",
+    "foot.copy": "© 2026 NSK AI · RENDEZ-VOUS LE 28.01.2027",
+    "mbar.close": "CLÔTURE<br>21 DÉC."
+  }
+};
