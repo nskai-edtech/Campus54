@@ -7,7 +7,7 @@ window.CAMPUS54 = {
   forms: {
     en: "https://forms.gle/j43KSvppZR3Pyz5v7",   // English application form
     fr: "https://forms.gle/j7riinMegvDWabHZ7",   // French application form (formulaire en français)
-    ar: ""    // Arabic application form (الاستمارة بالعربية)
+    ar: "https://forms.gle/Y5xoSbZTownZkYrH7"    // Arabic application form (الاستمارة بالعربية)
   },
   // Sponsor form (for example an Airtable form link). While empty, the
   // "Sponsor Campus 54" button opens an email to campus54@nskai.org instead.
