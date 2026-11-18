@@ -11,7 +11,7 @@ window.CAMPUS54 = {
   },
   // Sponsor form (for example an Airtable form link). While empty, the
   // "Sponsor Campus 54" button opens an email to campus54@nskai.org instead.
-  sponsorForm: "",
+  sponsorForm: "https://airtable.com/appnFpzuvDqNXK20a/pagB69cyQFkulVoSu/form",
   // Call for communities form, opened by "Partner with us". While empty, that
   // button opens an email to campus54@nskai.org instead.
   communityForm: "https://forms.gle/5GLqxYhzr8sLs78FA",
