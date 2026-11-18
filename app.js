@@ -71,6 +71,11 @@
 
   applyLang(pickLang());
 
+  // ---------- Discord ----------
+  if (cfg.discord && cfg.discord.trim()) {
+    document.querySelectorAll("[data-discord]").forEach(function (el) { el.href = cfg.discord.trim(); });
+  }
+
   // ---------- sponsor and community forms ----------
   // Each button keeps its mailto: fallback until a form link is set in config.js.
   [["sponsor-main", cfg.sponsorForm], ["community-main", cfg.communityForm]].forEach(function (pair) {

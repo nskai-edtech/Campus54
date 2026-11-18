@@ -77,6 +77,7 @@ window.I18N = {
     "comm.title": "Viens avec<br>ton équipe.",
     "comm.intro": "Pour les communautés étudiantes en IA, tech et code : GDG on Campus, branches IEEE, clubs d’IA universitaires et communautés indépendantes.",
     "comm.cta": "▶ Devenir partenaire",
+    "cta.discord": "Rejoindre la communauté",
     "comm.perks": "BONUS POUR LES PARTENAIRES",
     "comm.p1": "Votre logo sur le site et le programme de Campus 54",
     "comm.p2": "Une mise en avant lors d’un Country Day avant l’événement",

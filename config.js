@@ -14,6 +14,8 @@ window.CAMPUS54 = {
   sponsorForm: "https://airtable.com/appnFpzuvDqNXK20a/pagB69cyQFkulVoSu/form",
   // Call for communities form, opened by "Partner with us". While empty, that
   // button opens an email to campus54@nskai.org instead.
+  // NSK AI Discord, opened by "Join the community" and the footer DISCORD button.
+  discord: "https://discord.gg/whV2YMMT6",
   communityForm: "https://forms.gle/5GLqxYhzr8sLs78FA",
   // Countdown target: 28 January 2027, 00:00 Lagos time (WAT, UTC+1)
   eventStart: "2027-01-28T00:00:00+01:00"
