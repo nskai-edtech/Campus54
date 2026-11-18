@@ -15,8 +15,8 @@ window.I18N = {
     "nav.faq": "FAQ",
     "nav.play": "▶ JOUER",
     "play.eyebrow": "NIVEAU BONUS · ROCK RUN",
-    "play.title": "Mets ton pays au classement.",
-    "play.body": "Esquive et détruis les rochers de Mercure à Neptune. Chaque score s’ajoute au total de ton pays. Le jeu marche aussi hors ligne.",
+    "play.title": "Mets ton nom au classement.",
+    "play.body": "Esquive et détruis les rochers de Mercure à Neptune. Choisis un nom que personne n’a et grimpe au classement mondial. Le jeu marche aussi hors ligne.",
     "play.cta": "▶ JOUER À ROCK RUN",
 
     "cta.apply": "▶ Postuler pour intervenir",

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rock Run · Campus 54 by NSK AI</title>
-<meta name="description" content="Rock Run: dodge and shoot down rocks across the solar system. A Campus 54 by NSK AI game with player and country rankings. Plays offline.">
+<meta name="description" content="Rock Run: dodge and shoot down rocks across the solar system. A Campus 54 by NSK AI game with a global ranking. Plays offline.">
 <meta name="theme-color" content="#0A0A12">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/icon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icon-180.png">
 <link rel="manifest" href="/play/manifest.webmanifest">
 <meta property="og:title" content="Rock Run · Campus 54 by NSK AI">
-<meta property="og:description" content="Dodge and shoot down rocks across the solar system. Put your country on the board.">
+<meta property="og:description" content="Dodge and shoot down rocks across the solar system. Get your name on the board.">
 <meta property="og:image" content="https://campus54.nskai.org/assets/img/share.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,10 +38,8 @@
       <div id="last" class="last" hidden><span data-t="score">SCORE</span> <b id="lastv">0</b></div>
       <div class="best"><span data-t="best">YOUR BEST</span> <b id="bestv">0</b></div>
       <form id="startform" class="form" novalidate>
-        <label><span data-t="nick">Nickname</span>
+        <label><span data-t="nick">Your name</span>
           <input id="nick" maxlength="16" autocomplete="nickname" required></label>
-        <label><span data-t="country">Country</span>
-          <select id="country" required><option value="" data-t="pick">Pick your country</option></select></label>
         <button id="playbtn" type="submit" class="play" data-t="play">▶ PLAY</button>
         <p id="msg" class="msg" role="alert"></p>
       </form>
@@ -53,11 +51,9 @@
     <p id="sync" class="sync" role="status"></p>
     <p id="pending" class="pending"></p>
     <div class="board"><h2 data-t="players">TOP PLAYERS</h2><ol id="pl"></ol></div>
-    <div class="board"><h2 data-t="countries">TOP COUNTRIES</h2><ol id="cl"></ol></div>
   </aside>
 </main>
 
-<script src="/play/countries.js"></script>
 <script src="/play/game.js"></script>
 </body>
 </html>

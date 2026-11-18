@@ -31,6 +31,7 @@ html, body { margin: 0; background: #0A0A12; color: #FFFFFF; font-family: Urbani
 .board .nm { font-weight: 700; overflow-wrap: anywhere; }
 .board .nm small { display: block; color: #9A9AB0; font-weight: 500; font-size: 12px; }
 .board .sc { font-weight: 800; }
+.board li.me { background: #2A1010; outline: 2px solid #E00000; }
 .sync, .pending { margin: 0; font-size: 14px; color: #FFC400; min-height: 0; }
 .sync:empty, .pending:empty { display: none; }
 @media (max-width: 860px) {

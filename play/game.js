@@ -17,27 +17,27 @@
   var T = {
     en: {
       title: "ROCK RUN", sub: "Dodge and shoot the rocks. Reach Neptune.",
-      nick: "Nickname", country: "Country", pick: "Pick your country", play: "▶ PLAY", again: "▶ PLAY AGAIN",
+      nick: "Your name", play: "▶ PLAY", again: "▶ PLAY AGAIN",
       how: "Move: arrow keys, A/D or drag your finger. Your ship fires by itself.",
       over: "GAME OVER", score: "SCORE", best: "YOUR BEST", level: "PLANET", lives: "LIVES",
-      players: "TOP PLAYERS", countries: "TOP COUNTRIES", loading: "Loading ranking…",
+      players: "TOP PLAYERS", loading: "Loading ranking…",
       offline: "You are offline. Scores are saved on this phone and sent when you reconnect.",
       unavailable: "Ranking unavailable right now. Your scores are safe on this device.",
       pending: "score(s) waiting to be sent", sent: "Score sent. Rank #", saved: "Saved on this device.",
       empty: "No scores yet. Be the first.", back: "← Back to Campus 54", paused: "PAUSED · tap to continue",
-      needNick: "Enter a nickname (2-16 letters or numbers).", needCountry: "Pick your country.", arrive: "ARRIVING AT"
+      needNick: "Enter a name (2-16 letters or numbers).", taken: "That name is taken. Pick another one, then press Play.", arrive: "ARRIVING AT"
     },
     fr: {
       title: "ROCK RUN", sub: "Esquive et détruis les rochers. Atteins Neptune.",
-      nick: "Pseudo", country: "Pays", pick: "Choisis ton pays", play: "▶ JOUER", again: "▶ REJOUER",
+      nick: "Ton nom", play: "▶ JOUER", again: "▶ REJOUER",
       how: "Bouger : flèches, A/D ou glisse ton doigt. Ton vaisseau tire tout seul.",
       over: "PARTIE TERMINÉE", score: "SCORE", best: "TON RECORD", level: "PLANÈTE", lives: "VIES",
-      players: "MEILLEURS JOUEURS", countries: "MEILLEURS PAYS", loading: "Chargement du classement…",
+      players: "MEILLEURS JOUEURS", loading: "Chargement du classement…",
       offline: "Tu es hors ligne. Les scores sont gardés sur ce téléphone et envoyés à la reconnexion.",
       unavailable: "Classement indisponible pour le moment. Tes scores sont gardés sur cet appareil.",
       pending: "score(s) en attente d’envoi", sent: "Score envoyé. Rang n°", saved: "Gardé sur cet appareil.",
       empty: "Aucun score pour l’instant. Sois le premier.", back: "← Retour à Campus 54", paused: "PAUSE · touche pour continuer",
-      needNick: "Entre un pseudo (2 à 16 lettres ou chiffres).", needCountry: "Choisis ton pays.", arrive: "ARRIVÉE SUR"
+      needNick: "Entre un nom (2 à 16 lettres ou chiffres).", taken: "Ce nom est déjà pris. Choisis-en un autre, puis appuie sur Jouer.", arrive: "ARRIVÉE SUR"
     }
   }[LANG];
   document.documentElement.lang = LANG;
@@ -56,14 +56,8 @@
 
   // ---------- UI ----------
   var $ = function (id) { return document.getElementById(id); };
-  var nickIn = $("nick"), countryIn = $("country"), msg = $("msg"), menu = $("menu"), hud = $("hud");
-  var COUNTRY_NAME = {};
-  (window.C54_COUNTRIES || []).forEach(function (c) {
-    COUNTRY_NAME[c.code] = c[LANG];
-    var o = document.createElement("option"); o.value = c.code; o.textContent = c[LANG]; countryIn.appendChild(o);
-  });
+  var nickIn = $("nick"), msg = $("msg"), menu = $("menu"), hud = $("hud");
   nickIn.value = store.get("c54-nick", "");
-  countryIn.value = store.get("c54-country", "");
   $("bestv").textContent = store.get("c54-best", 0);
 
   // ---------- planets ----------
@@ -259,9 +253,9 @@
   function start() {
     var nick = nickIn.value.trim();
     if (!/^[\p{L}\p{N} _.-]{2,16}$/u.test(nick)) { msg.textContent = T.needNick; nickIn.focus(); return; }
-    if (!countryIn.value) { msg.textContent = T.needCountry; countryIn.focus(); return; }
-    store.set("c54-nick", nick); store.set("c54-country", countryIn.value);
+    store.set("c54-nick", nick);
     msg.textContent = "";
+    flush(); // sends any waiting scores under this name (e.g. after a "name taken")
     menu.hidden = true; hud.hidden = false; document.body.classList.add("playing");
     resize(); st = newGame(); last = performance.now();
     cancelAnimationFrame(raf); raf = requestAnimationFrame(loop);
@@ -270,7 +264,7 @@
   function endGame() {
     st.over = true;
     var result = {
-      id: playerId, nick: store.get("c54-nick", ""), country: store.get("c54-country", "XX"),
+      id: playerId, nick: store.get("c54-nick", ""),
       score: st.score, duration: Math.round(st.t * 10) / 10, level: st.level + 1, at: Date.now()
     };
     var best = Math.max(store.get("c54-best", 0), st.score);
@@ -300,11 +294,20 @@
     var queue = store.get("c54-pending", []);
     if (!queue.length) { loadBoard(justSent); justSent = false; return; }
     flushing = true;
-    var item = queue[0];
+    // Always send under the player's current name, so a renamed player's waiting scores follow them.
+    var item = Object.assign({}, queue[0], { id: playerId, nick: store.get("c54-nick", queue[0].nick) });
     fetch("/api/score", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(item) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
       .then(function (r) {
         flushing = false;
+        if (r.status === 409) {
+          // Name owned by someone else: keep the score, ask for a new name.
+          $("sync").textContent = T.taken; msg.textContent = T.taken;
+          if (menu.hidden === false) nickIn.focus();
+          showPending();
+          loadBoard();
+          return;
+        }
         if (r.ok || (r.status === 400)) {
           // Sent, or permanently refused: either way drop it from the queue.
           var q = store.get("c54-pending", []); q.shift(); store.set("c54-pending", q);
@@ -314,6 +317,7 @@
         } else {
           $("sync").textContent = (r.j && r.j.error) || T.unavailable;
           showPending();
+          loadBoard();
         }
       })
       .catch(function () { flushing = false; $("sync").textContent = T.offline; showPending(); });
@@ -334,19 +338,23 @@
   function loadBoard(fresh) {
     if (!navigator.onLine) { $("sync").textContent = T.offline; return; }
     if (!$("pl").children.length) $("pl").textContent = T.loading;
-    fetch(fresh ? "/api/leaderboard?fresh=" + Date.now() : "/api/leaderboard", { cache: fresh ? "no-store" : "default" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+    fetch(fresh ? "/api/leaderboard?fresh=" + Date.now() : "/api/leaderboard", { cache: fresh ? "no-store" : "no-cache" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
       store.set("c54-board", d); renderBoard(d);
     }).catch(function () {
       var cached = store.get("c54-board", null);
       if (cached) renderBoard(cached);
-      else { $("pl").textContent = T.unavailable; $("cl").textContent = ""; }
+      else { $("pl").textContent = T.unavailable; }
     });
   }
   function renderBoard(d) {
-    var pl = $("pl"), cl = $("cl"); pl.textContent = ""; cl.textContent = "";
-    if (!d.players.length) pl.textContent = T.empty;
-    d.players.slice(0, 20).forEach(function (p, i) { pl.appendChild(row(i + 1, p.nick, COUNTRY_NAME[p.country] || "", p.score)); });
-    d.countries.slice(0, 20).forEach(function (c, i) { cl.appendChild(row(i + 1, COUNTRY_NAME[c.country] || c.country, "", c.score)); });
+    var pl = $("pl"); pl.textContent = "";
+    if (!d.players || !d.players.length) { pl.textContent = T.empty; return; }
+    var me = store.get("c54-nick", "").toLowerCase();
+    d.players.slice(0, 50).forEach(function (p, i) {
+      var li = row(i + 1, p.nick, "", p.score);
+      if (p.nick.toLowerCase() === me) li.className = "me";
+      pl.appendChild(li);
+    });
   }
 
   // ---------- input ----------

@@ -1,8 +1,8 @@
 // Keeps Rock Run playable offline. Only controls /play/, never the main page.
 // Bump VERSION whenever a game file changes so players get the new version.
-var VERSION = "rockrun-v2";
+var VERSION = "rockrun-v4";
 var FILES = [
-  "/play/", "/play/index.html", "/play/game.js", "/play/play.css", "/play/countries.js",
+  "/play/", "/play/index.html", "/play/game.js", "/play/play.css",
   "/play/manifest.webmanifest", "/assets/img/icon-48.png", "/assets/img/icon-192.png"
 ];
 
