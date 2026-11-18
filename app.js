@@ -20,6 +20,12 @@
     return u && u.trim() ? u.trim() : "#apply";
   }
 
+  function setFormLink(el, url) {
+    el.href = url;
+    if (url.charAt(0) === "#") { el.removeAttribute("target"); el.removeAttribute("rel"); }
+    else { el.target = "_blank"; el.rel = "noopener noreferrer"; }
+  }
+
   function applyLang(lang) {
     var strings = dict[lang] || {};
     document.documentElement.lang = lang;
@@ -40,17 +46,18 @@
 
     // Main apply button goes to the form in the page's language;
     // the small link offers the other of English/French, plus Arabic.
-    var main = document.getElementById("apply-main");
-    if (main) main.href = formUrl(lang);
+    // Every "Apply" button opens the form in the page's language, in a new tab,
+    // so the site stays open behind it. Without a form link they scroll to #apply.
+    document.querySelectorAll("[data-apply]").forEach(function (el) { setFormLink(el, formUrl(lang)); });
     var other = lang === "fr" ? "en" : "fr";
     var a = document.getElementById("form-link-a");
     if (a) {
-      a.href = formUrl(other);
+      setFormLink(a, formUrl(other));
       a.textContent = other === "fr" ? "Français" : "English";
       a.lang = other;
     }
     var ar = document.getElementById("form-link-ar");
-    if (ar) ar.href = formUrl("ar");
+    if (ar) setFormLink(ar, formUrl("ar"));
 
     document.querySelectorAll(".lang button").forEach(function (b) {
       b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
