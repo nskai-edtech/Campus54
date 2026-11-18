@@ -1,0 +1,13 @@
+{
+  "name": "Rock Run · Campus 54 by NSK AI",
+  "short_name": "Rock Run",
+  "start_url": "/play/",
+  "scope": "/play/",
+  "display": "standalone",
+  "background_color": "#0A0A12",
+  "theme_color": "#0A0A12",
+  "icons": [
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

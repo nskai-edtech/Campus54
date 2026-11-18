@@ -25,3 +25,11 @@ Edit `i18n.js`. English text is in `index.html`.
 
 ## Put it online
 It is its own Vercel project at campus54.nskai.org. Every push to the `main` branch on GitHub (nskai-edtech/campus54) goes live about a minute later.
+
+## Rock Run (the game at /play)
+- `play/` is the game: `index.html`, `game.js` (all game logic, EN/FR text inside), `play.css`, `countries.js`, `sw.js` (offline support, controls /play/ only), `manifest.webmanifest`.
+- `api/score.js` saves a score, `api/leaderboard.js` returns the top 50 players and the countries. Both use Upstash Redis through `api/_redis.js` (keys start with `c54:`). The Vercel project needs `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`. Without them the game still plays and says the ranking is unavailable.
+- A country's total is the sum of its players' best scores. Limits: 20 scores per minute per IP, scores above 2000 points per second played are refused, nicknames are cleaned. Valid countries are in `api/_countries.js` and `play/countries.js` (keep both in sync).
+- Offline: scores are kept in the browser (`c54-pending`) and sent when the device is online again.
+- After changing any game file, bump `VERSION` in `play/sw.js`, or returning players keep the old copy.
+- To remove a bad nickname: in Upstash, delete it from the `c54:players` sorted set, subtract its score from `c54:countries`, and delete `c54:player:<id>`.

@@ -6,4 +6,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://campus54.nskai.org/?lang=fr"/>
     <changefreq>weekly</changefreq>
   </url>
+  <url>
+    <loc>https://campus54.nskai.org/play/</loc>
+  </url>
 </urlset>

@@ -13,6 +13,11 @@ window.I18N = {
     "nav.clubs": "CLUBS",
     "nav.sponsors": "SPONSORS",
     "nav.faq": "FAQ",
+    "nav.play": "▶ JOUER",
+    "play.eyebrow": "NIVEAU BONUS · ROCK RUN",
+    "play.title": "Mets ton pays au classement.",
+    "play.body": "Esquive et détruis les rochers de Mercure à Neptune. Chaque score s’ajoute au total de ton pays. Le jeu marche aussi hors ligne.",
+    "play.cta": "▶ JOUER À ROCK RUN",
 
     "cta.apply": "▶ Postuler pour intervenir",
     "cta.partner": "Devenir communauté partenaire",
