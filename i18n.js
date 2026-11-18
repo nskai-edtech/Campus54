@@ -5,7 +5,7 @@
  */
 window.I18N = {
   fr: {
-    "meta.title": "Campus 54 — Un sommet mondial de l’IA par NSK AI",
+    "meta.title": "Campus 54 par NSK AI | Sommet mondial de l’IA, 28–30 janvier 2027",
     "meta.desc": "Campus 54 est un sommet mondial de l’IA, gratuit et entièrement en ligne, organisé par NSK AI. Des keynotes de leaders de l’IA du monde entier et des panels animés par des étudiants des 54 pays africains. Du 28 au 30 janvier 2027.",
 
     "nav.tracks": "THÈMES",
